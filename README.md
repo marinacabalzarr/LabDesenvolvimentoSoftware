@@ -1,5 +1,5 @@
 # Sistema de Matrículas
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+O objetivo do sistema de matrículas da universidade é informatizar e automatizar o processo de inscrição e gestão de disciplinas, facilitando o controle acadêmico da secretaria, alunos e professores.
 
 ## Integrantes
 * André Xavier Lazarini
