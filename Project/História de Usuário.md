@@ -6,14 +6,18 @@ Como usuário do sistema
 Quero realizar login com minha senha
 Para que eu tenha acesso às funcionalidades do sistema
 
-Como novo usuário
+Como usuário do Sistema
 Quero realizar meu cadastro no sistema
 Para que eu possa acessar minhas informações e funcionalidades
 
 2. Gerenciamento de Matrículas
 
 Como aluno
-Quero requisitar minha matrícula
+Quero requisitar minha matrícula obrigatória
+Para que eu possa me inscrever nas disciplinas desejadas
+
+Como aluno
+Quero requisitar minha matrícula opcional
 Para que eu possa me inscrever nas disciplinas desejadas
 
 Como aluno
@@ -39,7 +43,15 @@ Quero gerar o currículo de cada semestre
 Para que as disciplinas sejam organizadas corretamente
 
 Como secretária
-Quero manter informações sobre disciplinas, professores e alunos
+Quero manter informações sobre disciplinas
+Para que os dados estejam sempre atualizados
+
+Como secretária
+Quero manter informações sobre professores
+Para que os dados estejam sempre atualizados
+
+Como secretária
+Quero manter informações sobre alunos
 Para que os dados estejam sempre atualizados
 
 4. Cobrança e Pagamentos
