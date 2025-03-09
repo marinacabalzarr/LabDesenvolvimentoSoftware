@@ -1,3 +1,4 @@
+package br.lds;
 
 public class Usuario {
     private String nome;
