@@ -17,12 +17,9 @@ public class Secretaria extends Usuario {
         this.professores = new ArrayList<>();
         this.disciplinas = new ArrayList<>();
         this.cursos = new ArrayList<>();
-        this.usuarios.add(this); // Adiciona a própria secretaria como um usuário
+        this.usuarios.add(this);
     }
 
-    // ===========================
-    // MÉTODOS GETTERS PARA CORRIGIR O ERRO
-    // ===========================
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
     }
