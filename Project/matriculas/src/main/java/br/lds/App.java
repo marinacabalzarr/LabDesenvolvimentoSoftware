@@ -69,7 +69,6 @@ public class App {
                         System.out.print("Tipo da disciplina (1 = Obrigatória, 2 = Optativa): ");
                         int tipoDisciplina = scanner.nextInt();
                     
-                        // Mostrar lista de cursos disponíveis para associar a disciplina
                         System.out.println("Escolha o curso para associar a disciplina:");
                         for (int i = 0; i < secretaria.getCursos().size(); i++) {
                             System.out.println((i + 1) + ". " + secretaria.getCursos().get(i).getNome());
