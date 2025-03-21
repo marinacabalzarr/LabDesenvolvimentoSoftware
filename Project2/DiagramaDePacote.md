@@ -8,7 +8,6 @@ package "Usuarios" {
         + cadastrar(nome: String, senha: String, tipo: Tipo): void
         + logar(nome: String, senha: String): void
     }
-
     class TipoUsuario {
         - cliente
         - agente
@@ -31,18 +30,15 @@ package "Atores" {
         + listarAutomoveis(automovel: Automovel): void
         + cancelarPedido(pedido: Pedido): void
     }
-
     class Agente {
         - parecerPositivo: boolean
         + modificarPedido(pedido: Pedido): void
         + avaliarPedido(pedido: Pedido): void
     }
-
     class FuncionarioSistema {
         + cadastrarAutomovel(): void
         + realizarPedido(automovel: Automovel, cliente: Cliente): void
     }
-
     class AgenteBanco {
         + realizarContratoCredito(): void
     }
@@ -55,7 +51,6 @@ package "Negócio" {
         - cliente: Cliente
         - status: String
     }
-
     class Automovel {
         - matricula: int
         - ano: String
@@ -63,7 +58,6 @@ package "Negócio" {
         - modelo: String
         - placa: String
     }
-
     class TipoContrato {
         - propriedadeCliente
         - propriedadeEmpresa
