@@ -19,15 +19,18 @@ O cliente pode:
 5. Modificar pedido– Faz alterações em um pedido já criado.
 6. Executar contrato– Finaliza o processo de aluguel formalizando o contrato.
 7. Conceder contrato– Aceita os termos do contrato proposto.
+ 
 Agente
 
 O agente representa uma função intermediária de avaliação e pode:
 1. Realizar contrato de crédito– Formaliza um contrato de crédito com o cliente.
 2. Avaliar pedido– Analisa as solicitações de aluguel feitas pelos clientes.
 3. Analisar financeiramente– Verifica a viabilidade financeira do cliente para aprovação do pedido.
+ 
 Funcionário do Sistema
 
 1. Realizar pedido– Inserir pedidos em nome de clientes ou para testes.
+ 
 Usuário
 
 Atores que precisam se identificar no sistema. Podem:
