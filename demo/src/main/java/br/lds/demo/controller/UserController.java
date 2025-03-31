@@ -1,3 +1,4 @@
+
 package br.lds.demo.controller;
 
 import br.lds.demo.model.User;
@@ -5,42 +6,42 @@ import br.lds.demo.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
 @CrossOrigin(origins = "*")
 public class UserController {
-    private final UserRepository repository;
 
-    public UserController(UserRepository repository) {
-        this.repository = repository;
+    private final UserRepository userRepository;
+
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @GetMapping
-    public List<User> getAll() {
-        return repository.findAll();
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
-    @PostMapping
-    public User create(@RequestBody User user) {
-        return repository.save(user);
+    @GetMapping("/{id}")
+    public Optional<User> getUserById(@PathVariable Long id) {
+        return userRepository.findById(id);
     }
 
     @PutMapping("/{id}")
-    public User update(@PathVariable Long id, @RequestBody User user) {
-        return repository.findById(id).map(u -> {
-            u.setName(user.getName());
-            u.setEmail(user.getEmail());
-            return repository.save(u);
-        }).orElseGet(() -> {
-            user.setId(id);
-            return repository.save(user);
-        });
+    public User updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+        return userRepository.findById(id)
+            .map(user -> {
+                user.setName(updatedUser.getName());
+                user.setEmail(updatedUser.getEmail());
+                return userRepository.save(user);
+            })
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        repository.deleteById(id);
+    public void deleteUser(@PathVariable Long id) {
+        userRepository.deleteById(id);
     }
 }
-
