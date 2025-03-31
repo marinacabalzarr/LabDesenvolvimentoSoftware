@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRUD de Usuários</title>
+</head>
+<body>
+  <h2>Usuários</h2>
+  <div>
+    <input type="text" id="name" placeholder="Nome">
+    <input type="text" id="email" placeholder="Email">
+    <button onclick="addUser()">Adicionar</button>
+  </div>
+  <ul id="userList"></ul>
+
+  <script>
+    const api = 'http://localhost:8080/users';
+
+    function loadUsers() {
+      fetch(api)
+        .then(res => res.json())
+        .then(data => {
+          const list = document.getElementById('userList');
+          list.innerHTML = '';
+          data.forEach(user => {
+            const li = document.createElement('li');
+            li.innerText = `${user.name} (${user.email})`;
+            li.onclick = () => deleteUser(user.id);
+            list.appendChild(li);
+          });
+        });
+    }
+
+    function addUser() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      fetch(api, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ name, email })
+      }).then(loadUsers);
+    }
+
+    function deleteUser(id) {
+      fetch(`${api}/${id}`, { method: 'DELETE' })
+        .then(loadUsers);
+    }
+
+    loadUsers();
+  </script>
+</body>
+</html>
