@@ -12,9 +12,7 @@ Professor
 
 Como professor, quero distribuir moedas aos alunos para reconhecer boas práticas.
 
-Como professor, quero justificar o envio de moedas para registrar o motivo da premiação.
-
-Como professor, quero consultar meu saldo e o histórico de envio de moedas.
+Como professor, quero consultar meu saldo e o histórico de envio de moedas para garantir o sucesso na transação.
 
 Empresa Parceira
 
