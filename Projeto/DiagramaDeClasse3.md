@@ -15,7 +15,8 @@ class Aluno {
     - endereco: String
     - curso: String
     - instituicao: Instituicao
-    + consultarExtrato(): List<Transacao>
+    - moeda: int
+    + consultarExtrato(): List
     + trocarMoedas(vantagem: Vantagem): void
     + receberMoedas(valor: int, mensagem: String): void
     + notificarPorEmail(mensagem: String): void
@@ -29,7 +30,7 @@ class Professor {
     - moeda: int
     + receberSaldoSemestral(): void
     + enviarMoedas(aluno: Aluno, valor: int, mensagem: String): void
-    + consultarExtrato(): List<Transacao>
+    + consultarExtrato(): List
 }
 
 class EmpresaParceira {
@@ -64,13 +65,13 @@ class Transacao {
     + gerarCodigoResgate(): String
 }
 
-Aluno --|> Usuario
-Professor --|> Usuario
+Aluno         --|> Usuario
+Professor     --|> Usuario
 EmpresaParceira --|> Usuario
 
-Aluno --> Instituicao
-Professor --> Instituicao
+Aluno         --> Instituicao
+Professor     --> Instituicao
 
-Vantagem --> EmpresaParceira
+Vantagem      --> EmpresaParceira
 
 @enduml
