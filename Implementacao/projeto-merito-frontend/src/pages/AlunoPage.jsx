@@ -5,14 +5,21 @@ import AlunoForm from '../components/AlunoForm';
 const AlunoPage = () => {
     const [showForm, setShowForm] = useState(false);
     const [currentAluno, setCurrentAluno] = useState(null);
+    const [refreshList, setRefreshList] = useState(false);
 
     const handleSuccess = () => {
         setShowForm(false);
         setCurrentAluno(null);
+        setRefreshList(prev => !prev);
+    };
+
+    const handleEdit = (aluno) => {
+        setCurrentAluno(aluno);
+        setShowForm(true);
     };
 
     return (
-        <div>
+        <div className="aluno-page-container">
             <h1>Gerenciamento de Alunos</h1>
             {showForm ? (
                 <AlunoForm 
@@ -21,8 +28,21 @@ const AlunoPage = () => {
                 />
             ) : (
                 <>
-                    <button onClick={() => setShowForm(true)}>Adicionar Aluno</button>
-                    <AlunoList />
+                    <div className="button-container">
+                        <button 
+                            className="add-button"
+                            onClick={() => {
+                                setCurrentAluno(null);
+                                setShowForm(true);
+                            }}
+                        >
+                            {currentAluno ? 'Editar Aluno' : 'Adicionar Aluno'}
+                        </button>
+                    </div>
+                    <AlunoList 
+                        onEdit={handleEdit} 
+                        refreshTrigger={refreshList} 
+                    />
                 </>
             )}
         </div>

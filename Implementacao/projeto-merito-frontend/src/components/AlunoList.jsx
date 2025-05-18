@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAlunos, deleteAluno } from '../services/alunoService';
 
-const AlunoList = () => {
+const AlunoList = ({ onEdit }) => {  // Recebe a função onEdit como prop
     const [alunos, setAlunos] = useState([]);
 
     useEffect(() => {
@@ -27,6 +27,7 @@ const AlunoList = () => {
     };
 
     return (
+        <div className="main-content">
         <div>
             <h2>Lista de Alunos</h2>
             <table>
@@ -36,6 +37,7 @@ const AlunoList = () => {
                         <th>Nome</th>
                         <th>Email</th>
                         <th>CPF</th>
+                        <th>Curso</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -46,13 +48,26 @@ const AlunoList = () => {
                             <td>{aluno.nome}</td>
                             <td>{aluno.email}</td>
                             <td>{aluno.cpf}</td>
-                            <td>
-                                <button class= "delete-btn" onClick={() => handleDelete(aluno.id)}>Deletar</button>
+                            <td>{aluno.curso}</td>
+                            <td className="actions-cell">
+                                <button 
+                                    onClick={() => onEdit(aluno)}  // Chama a função passada pelo componente pai
+                                    className="edit-btn"
+                                >
+                                    Editar
+                                </button>
+                                <button 
+                                    onClick={() => handleDelete(aluno.id)} 
+                                    className="delete-btn"
+                                >
+                                    Deletar
+                                </button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

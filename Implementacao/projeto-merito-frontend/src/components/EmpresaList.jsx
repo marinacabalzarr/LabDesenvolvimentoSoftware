@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getEmpresas, deleteEmpresa } from '../services/empresaService';
 
-const EmpresaList = () => {
+const EmpresaList = ({ onEdit }) => {  // Recebe onEdit como prop
     const [empresas, setEmpresas] = useState([]);
 
     useEffect(() => {
@@ -27,9 +27,10 @@ const EmpresaList = () => {
     };
 
     return (
-        <div>
+        <div className="main-content">
+        <div className="empresa-list-container">
             <h2>Lista de Empresas</h2>
-            <table>
+            <table className="empresa-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -46,13 +47,25 @@ const EmpresaList = () => {
                             <td>{empresa.nome}</td>
                             <td>{empresa.email}</td>
                             <td>{empresa.cnpj}</td>
-                            <td>
-                                <button onClick={() => handleDelete(empresa.id)}>Deletar</button>
+                            <td className="actions-cell">
+                                <button 
+                                    onClick={() => onEdit(empresa)}  // Usa a prop onEdit
+                                    className="edit-btn"
+                                >
+                                    Editar
+                                </button>
+                                <button 
+                                    onClick={() => handleDelete(empresa.id)}
+                                    className="delete-btn"
+                                >
+                                    Deletar
+                                </button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

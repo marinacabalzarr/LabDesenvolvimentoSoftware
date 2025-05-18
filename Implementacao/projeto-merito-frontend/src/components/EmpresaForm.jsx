@@ -29,7 +29,7 @@ const EmpresaForm = ({ empresa, onSuccess }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="main-content" onSubmit={handleSubmit}>
             <div>
                 <label>Nome:</label>
                 <input type="text" name="nome" value={formData.nome} onChange={handleChange} required />
@@ -46,7 +46,7 @@ const EmpresaForm = ({ empresa, onSuccess }) => {
                 <label>CNPJ:</label>
                 <input type="text" name="cnpj" value={formData.cnpj} onChange={handleChange} required />
             </div>
-            <button type="submit">Salvar</button>
+            <button className="secondary-btn" type="submit">Salvar</button>
         </form>
     );
 };
