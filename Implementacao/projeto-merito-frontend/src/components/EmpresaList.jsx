@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getEmpresas, deleteEmpresa } from '../services/empresaService';
 
-const EmpresaList = ({ onEdit }) => {  // Recebe onEdit como prop
+const EmpresaList = ({ onEdit }) => { 
     const [empresas, setEmpresas] = useState([]);
 
     useEffect(() => {

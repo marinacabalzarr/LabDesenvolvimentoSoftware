@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAlunos, deleteAluno } from '../services/alunoService';
 
-const AlunoList = ({ onEdit }) => {  // Recebe a função onEdit como prop
+const AlunoList = ({ onEdit }) => {  
     const [alunos, setAlunos] = useState([]);
 
     useEffect(() => {
@@ -51,7 +51,7 @@ const AlunoList = ({ onEdit }) => {  // Recebe a função onEdit como prop
                             <td>{aluno.curso}</td>
                             <td className="actions-cell">
                                 <button 
-                                    onClick={() => onEdit(aluno)}  // Chama a função passada pelo componente pai
+                                    onClick={() => onEdit(aluno)} 
                                     className="edit-btn"
                                 >
                                     Editar
