@@ -29,7 +29,7 @@ const EmpresaForm = ({ empresa, onSuccess }) => {
     };
 
     return (
-        <form className="main-content" onSubmit={handleSubmit}>
+        <form className="form-empresa" onSubmit={handleSubmit}>
             <div>
                 <label>Nome:</label>
                 <input type="text" name="nome" value={formData.nome} onChange={handleChange} required />

@@ -37,7 +37,7 @@ const VantagemForm = ({ onClose }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+    <form className='form-vantagem' onSubmit={handleSubmit} >
       <h3>Cadastrar Vantagem</h3>
 
       <label>Nome:</label>
@@ -47,7 +47,7 @@ const VantagemForm = ({ onClose }) => {
       <input type="text" name="descricao" value={formData.descricao} onChange={handleChange} required />
 
       <label>Custo em Moedas:</label>
-      <input type="number" name="custoMoedas" value={formData.custoMoedas} onChange={handleChange} required />
+      <input type="number" name="custoMoedas" value={formData.custoMoedas} onChange={handleChange} min={0} required />
 
       <label>URL da Imagem:</label>
       <input type="text" name="imagem" value={formData.imagem} onChange={handleChange} />

@@ -51,7 +51,7 @@ const AlunoPage = () => {
                         onEdit={handleEdit}
                         refreshTrigger={refreshList}
                     />
-                    <h2>Vantagens Cadastradas</h2>
+                    <h2 className='titulo'>Vantagens Cadastradas</h2>
                     <div className="vantagens-grid">
                         {vantagens.map((v) => (
                             <div key={v.id} className="vantagem-card">
