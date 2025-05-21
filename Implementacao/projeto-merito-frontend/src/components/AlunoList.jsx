@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getAlunos, deleteAluno } from '../services/alunoService';
 
-const AlunoList = ({ onEdit }) => {  
+const AlunoList = ({ onEdit, refreshTrigger }) => {  
     const [alunos, setAlunos] = useState([]);
 
     useEffect(() => {
         fetchAlunos();
-    }, []);
+    }, [refreshTrigger]);
 
     const fetchAlunos = async () => {
         try {

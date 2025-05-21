@@ -49,11 +49,11 @@ const AlunoForm = ({ aluno, onSuccess }) => {
             </div>
             <div>
                 <label>CPF:</label>
-                <input type="text" name="cpf" value={formData.cpf} onChange={handleChange} minLength="11" required />
+                <input type="number" name="cpf" value={formData.cpf} onChange={handleChange} minLength="11" required />
             </div>
             <div>
                 <label>RG:</label>
-                <input type="text" name="rg" value={formData.rg} onChange={handleChange} minLength="8" required />
+                <input type="number" name="rg" value={formData.rg} onChange={handleChange} minLength="8" required />
             </div>
             <div>
                 <label>Endereço:</label>

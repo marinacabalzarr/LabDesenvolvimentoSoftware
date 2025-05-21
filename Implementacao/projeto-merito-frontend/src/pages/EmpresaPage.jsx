@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import EmpresaList from '../components/EmpresaList';
 import EmpresaForm from '../components/EmpresaForm';
+import VantagemForm from '../components/VantagemForm';
+
 
 const EmpresaPage = () => {
     const [showForm, setShowForm] = useState(false);
     const [currentEmpresa, setCurrentEmpresa] = useState(null);
     const [refreshList, setRefreshList] = useState(false);
+    const [showVantagemForm, setShowVantagemForm] = useState(false);
+
 
     const handleSuccess = () => {
         setShowForm(false);
@@ -39,6 +43,8 @@ const EmpresaPage = () => {
                         >
                             {currentEmpresa ? 'Editar Empresa' : 'Adicionar Empresa'}
                         </button>
+                        <button onClick={() => setShowVantagemForm(true)}>Cadastrar Vantagem</button>
+                        {showVantagemForm && <VantagemForm onClose={() => setShowVantagemForm(false)} />}
                     </div>
                     <EmpresaList 
                         onEdit={handleEdit} 

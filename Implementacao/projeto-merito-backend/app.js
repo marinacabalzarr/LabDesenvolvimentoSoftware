@@ -17,6 +17,9 @@ app.listen(PORT, () => {
 });
 
 app.use(cors({
-  origin: 'http://localhost:3001', // Porta do frontend
+  origin: 'http://localhost:3001', 
   credentials: true
 }));
+
+const vantagemRoutes = require('./src/routes/VantagemRoutes');
+app.use('/api', vantagemRoutes); // ou '/api/vantagens' direto se preferir

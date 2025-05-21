@@ -44,7 +44,7 @@ const EmpresaForm = ({ empresa, onSuccess }) => {
             </div>
             <div>
                 <label>CNPJ:</label>
-                <input type="text" name="cnpj" value={formData.cnpj} onChange={handleChange} minLength="14" required />
+                <input type="number" name="cnpj" value={formData.cnpj} onChange={handleChange} minLength="14" required />
             </div>
             <button className="secondary-btn" type="submit">Salvar</button>
         </form>
