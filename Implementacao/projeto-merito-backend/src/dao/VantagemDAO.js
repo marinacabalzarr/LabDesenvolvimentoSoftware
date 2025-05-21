@@ -4,7 +4,7 @@ const Vantagem = require('../models/Vantagem');
 class VantagemDAO {
     async create(vantagem) {
         const sql = 'INSERT INTO vantagens (nome, descricao, custo_moedas, imagem, empresa_id) VALUES (?, ?, ?, ?, ?)';
-        const params = [vantagem.nome, vantagem.descricao, vantagem.custoMoedas, vantagem.imagem, vantagem.empresaId];
+        const params = [vantagem.nome, vantagem.descricao, vantagem.custo_moedas, vantagem.imagem, vantagem.empresa_id];
         await db.query(sql, params);
     }
 

@@ -2,17 +2,28 @@ const Vantagem = require('../models/Vantagem');
 const dao = require('../dao/VantagemDAO'); // ✅ CERTO
 const db = require('../dao/Database');
 
-const criarVantagem = (req, res) => {
-  const { descricao } = req.body;
-  dao.inserir(new Vantagem(null, descricao))
-    .then(() => res.status(201).send('Ok'))
-    .catch(err => res.status(500).send(err.message));
+const criarVantagem = async (req, res) => {
+  try {
+    console.log("Payload recebido:", req.body); // 👈 isso mostra o que está chegando
+    const { nome, descricao, custo_moedas, imagem, empresa_id } = req.body;
+    const vantagem = new Vantagem(nome, descricao, custo_moedas, imagem, empresa_id);
+    await dao.create(vantagem);
+    res.status(201).send('Vantagem criada com sucesso');
+  } catch (err) {
+    console.error("Erro em criarVantagem:", err); // 👈 isso mostra o erro real
+    res.status(500).send(err.message);
+  }
 };
 
-const listarVantagens = (req, res) => {
-  dao.listar()
-    .then((dados) => res.json(dados))
-    .catch(err => res.status(500).send(err.message));
+
+const listarVantagens = async (req, res) => {
+  try {
+    const vantagens = await dao.readAll();
+    res.json(vantagens);
+  } catch (err) {
+    console.error("Erro em listarVantagens:", err); // 👈 isso mostra o erro real
+    res.status(500).send(err.message);
+  }
 };
 
 module.exports = {

@@ -19,13 +19,15 @@ const VantagemForm = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:3001/api/vantagens', {
+      await axios.post('http://localhost:3000/api/vantagens', {
         nome: formData.nome,
         descricao: formData.descricao,
-        custoMoedas: parseInt(formData.custoMoedas),
+        custo_moedas: parseInt(formData.custoMoedas),
         imagem: formData.imagem,
-        empresaId: parseInt(formData.empresaId)
+        empresa_id: parseInt(formData.empresaId)
       });
+
+
       alert('Vantagem cadastrada com sucesso!');
       onClose(); // fecha o form
     } catch (error) {
@@ -54,8 +56,8 @@ const VantagemForm = ({ onClose }) => {
       <input type="number" name="empresaId" value={formData.empresaId} onChange={handleChange} required />
 
       <div style={{ marginTop: '10px' }}>
-        <button type="submit">Salvar</button>
-        <button type="button" onClick={onClose} style={{ marginLeft: '10px' }}>
+        <button className='add-button' type="submit">Salvar</button>
+        <button className='delete-button' type="button" onClick={onClose} style={{ marginLeft: '10px' }}>
           Cancelar
         </button>
       </div>

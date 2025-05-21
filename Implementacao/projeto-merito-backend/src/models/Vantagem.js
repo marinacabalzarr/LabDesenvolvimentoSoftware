@@ -1,12 +1,11 @@
 class Vantagem {
-    constructor(id, nome, descricao, custoMoedas, imagem, empresaId) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.custoMoedas = custoMoedas;
-        this.imagem = imagem;
-        this.empresaId = empresaId;
-    }
+  constructor(nome, descricao, custo_moedas, imagem, empresa_id) {
+    this.nome = nome;
+    this.descricao = descricao;
+    this.custo_moedas = custo_moedas;
+    this.imagem = imagem;
+    this.empresa_id = empresa_id;
+  }
 }
 
 module.exports = Vantagem;

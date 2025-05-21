@@ -25,30 +25,36 @@ const EmpresaPage = () => {
     return (
         <div className="empresa-page-container">
             <h1>Gerenciamento de Empresas</h1>
-            
+
             {showForm ? (
-                <EmpresaForm 
-                    empresa={currentEmpresa} 
-                    onSuccess={handleSuccess} 
+                <EmpresaForm
+                    empresa={currentEmpresa}
+                    onSuccess={handleSuccess}
                 />
             ) : (
                 <>
-                    <div className="button-container">
-                        <button 
-                            onClick={() => {
-                                setCurrentEmpresa(null);
-                                setShowForm(true);
-                            }}
-                            className="add-button"
-                        >
-                            {currentEmpresa ? 'Editar Empresa' : 'Adicionar Empresa'}
-                        </button>
-                        <button onClick={() => setShowVantagemForm(true)}>Cadastrar Vantagem</button>
-                        {showVantagemForm && <VantagemForm onClose={() => setShowVantagemForm(false)} />}
+                    <div className="empresa-content-wrapper">
+                        <div className='empresa-buttons'>
+                            <button
+                                onClick={() => {
+                                    setCurrentEmpresa(null);
+                                    setShowForm(true);
+                                }}
+                                className="add-button"
+                            >
+                                {currentEmpresa ? 'Editar Empresa' : 'Adicionar Empresa'}
+                            </button>
+                            <button className='vantagem-button' onClick={() => setShowVantagemForm(true)}>Cadastrar Vantagem</button>
+                        </div>
+                        {showVantagemForm && (
+                            <div className="vantagem-form">
+                                <VantagemForm onClose={() => setShowVantagemForm(false)} />
+                            </div>
+                        )}
                     </div>
-                    <EmpresaList 
-                        onEdit={handleEdit} 
-                        refreshTrigger={refreshList} 
+                    <EmpresaList
+                        onEdit={handleEdit}
+                        refreshTrigger={refreshList}
                     />
                 </>
             )}

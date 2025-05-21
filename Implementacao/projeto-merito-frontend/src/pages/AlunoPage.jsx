@@ -10,7 +10,7 @@ const AlunoPage = () => {
     const [vantagens, setVantagens] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/vantagens')
+        axios.get('http://localhost:3000/api/vantagens')
             .then(res => setVantagens(res.data))
             .catch(err => console.error("Erro ao carregar vantagens:", err));
     }, [refreshList]);
@@ -30,14 +30,14 @@ const AlunoPage = () => {
         <div className="aluno-page-container">
             <h1>Gerenciamento de Alunos</h1>
             {showForm ? (
-                <AlunoForm 
-                    aluno={currentAluno} 
-                    onSuccess={handleSuccess} 
+                <AlunoForm
+                    aluno={currentAluno}
+                    onSuccess={handleSuccess}
                 />
             ) : (
                 <>
                     <div className="button-container">
-                        <button 
+                        <button
                             className="add-button"
                             onClick={() => {
                                 setCurrentAluno(null);
@@ -47,17 +47,21 @@ const AlunoPage = () => {
                             {currentAluno ? 'Editar Aluno' : 'Adicionar Aluno'}
                         </button>
                     </div>
-                    <AlunoList 
-                        onEdit={handleEdit} 
-                        refreshTrigger={refreshList} 
+                    <AlunoList
+                        onEdit={handleEdit}
+                        refreshTrigger={refreshList}
                     />
-
                     <h2>Vantagens Cadastradas</h2>
-                    <ul>
+                    <div className="vantagens-grid">
                         {vantagens.map((v) => (
-                            <li key={v.id}>{v.descricao}</li>
+                            <div key={v.id} className="vantagem-card">
+                                <h4>{v.nome}</h4>
+                                <p>{v.descricao}</p>
+                                <small><b>Custo:</b> {v.custo_moedas} moedas</small>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
+
                 </>
             )}
         </div>

@@ -62,12 +62,6 @@ const EmpresaList = ({ onEdit }) => {
                                     >
                                         Deletar
                                     </button>
-                                    <button
-                                        onClick={() => navigate(`/empresas/${empresa.id}/vantagens`)}
-                                        className="vantagem-btn"
-                                    >
-                                        Vantagens
-                                    </button>
                                 </td>
                             </tr>
                         ))}
