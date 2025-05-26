@@ -9,7 +9,7 @@ class ProfessorDAO {
 
   async findById(id) {
     const sql = 'SELECT * FROM professores WHERE id = ?';
-    const [result] = await db.query(sql, [id]);
+    const result = await db.query(sql, [id]);
     return result[0];
   }
 

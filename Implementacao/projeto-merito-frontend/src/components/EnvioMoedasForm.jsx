@@ -54,8 +54,6 @@ const EnvioMoedasForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Envio de Moedas</h2>
-
             <label>Professor</label>
             <select name="professor_id" value={formData.professor_id} onChange={handleChange} required>
                 <option value="">Selecione</option>
@@ -76,7 +74,7 @@ const EnvioMoedasForm = () => {
             <input type="number" name="quantidade" value={formData.quantidade} onChange={handleChange} min="1" required />
 
             <label>Mensagem</label>
-            <textarea name="mensagem" value={formData.mensagem} onChange={handleChange} required />
+            <textarea name="mensagem" maxLength={100} value={formData.mensagem} onChange={handleChange} required />
 
             <button type="submit">Enviar Moedas</button>
         </form>

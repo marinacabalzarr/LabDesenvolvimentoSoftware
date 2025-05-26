@@ -14,12 +14,30 @@ class TransacaoDAO {
   }
 
   async extratoProfessor(id) {
-    const sql = 'SELECT * FROM transacoes WHERE professor_id = ? ORDER BY data DESC';
+    const sql = `
+    SELECT t.id, t.quantidade, t.mensagem, t.data,
+           a.nome AS nome_aluno,
+           p.nome AS nome_professor
+    FROM transacoes t
+    JOIN alunos a ON t.aluno_id = a.id
+    JOIN professores p ON t.professor_id = p.id
+    WHERE t.professor_id = ?
+    ORDER BY t.data DESC
+  `;
     return await db.query(sql, [id]);
   }
 
   async extratoAluno(id) {
-    const sql = 'SELECT * FROM transacoes WHERE aluno_id = ? ORDER BY data DESC';
+    const sql = `
+    SELECT t.id, t.quantidade, t.mensagem, t.data,
+           a.nome AS nome_aluno,
+           p.nome AS nome_professor
+    FROM transacoes t
+    JOIN alunos a ON t.aluno_id = a.id
+    JOIN professores p ON t.professor_id = p.id
+    WHERE t.aluno_id = ?
+    ORDER BY t.data DESC
+  `;
     return await db.query(sql, [id]);
   }
 }

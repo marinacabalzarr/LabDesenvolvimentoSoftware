@@ -6,12 +6,14 @@ const ProfessorPage = () => {
   const [professorId, setProfessorId] = useState('');
 
   return (
-    <div className="main-content">
-      <h1>Painel do Professor</h1>
+    <div className="painel-professor-container">
+      <h1>Painel do Professor - Envio de Moedas</h1>
 
-      <EnvioMoedasForm />
+      <div className="envio-moedas-form">
+        <EnvioMoedasForm />
+      </div>
 
-      <div style={{ marginTop: '40px' }}>
+      <div className="consulta-extrato">
         <h3>Consultar Extrato</h3>
         <input
           type="number"
@@ -19,10 +21,18 @@ const ProfessorPage = () => {
           value={professorId}
           onChange={e => setProfessorId(e.target.value)}
         />
-        {professorId && <ExtratoList tipo="professor" id={professorId} />}
       </div>
+
+      {professorId && (
+        <>
+          <div className="extrato-tabela-container">
+            <ExtratoList tipo="professor" id={professorId} />
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
 export default ProfessorPage;
+

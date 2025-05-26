@@ -35,8 +35,8 @@ const ExtratoList = ({ tipo, id }) => {
             {extrato.map((t, index) => (
               <tr key={index}>
                 <td>{t.id}</td>
-                <td>{t.aluno_id}</td>
-                <td>{t.professor_id}</td>
+                <td>{t.nome_aluno}</td>
+                <td>{t.nome_professor}</td>
                 <td>{t.quantidade}</td>
                 <td>{t.mensagem}</td>
                 <td>{new Date(t.data).toLocaleString()}</td>
