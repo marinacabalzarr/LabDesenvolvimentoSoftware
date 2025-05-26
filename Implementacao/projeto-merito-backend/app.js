@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const alunoRoutes = require('./src/routes/AlunoRoutes');
 const empresaRoutes = require('./src/routes/EmpresaParceiraRoutes');
+const professorRoutes = require('./src/routes/ProfessorRoutes');
+const transacaoRoutes = require('./src/routes/TransacaoRoutes');
 
 const app = express();
 
@@ -10,6 +12,8 @@ app.use(express.json());
 
 app.use('/api/alunos', alunoRoutes);
 app.use('/api/empresas', empresaRoutes);
+app.use('/api', professorRoutes);
+app.use('/api', transacaoRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
@@ -22,4 +26,4 @@ app.use(cors({
 }));
 
 const vantagemRoutes = require('./src/routes/VantagemRoutes');
-app.use('/api', vantagemRoutes); // ou '/api/vantagens' direto se preferir
+app.use('/api', vantagemRoutes);
