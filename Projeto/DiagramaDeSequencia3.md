@@ -3,9 +3,9 @@
 actor Aluno
 
 participant TelaAluno as "Frontend (Routes)"
-participant VantagensController as "Controller"
-participant VantagensModel as "Model"
-participant VantagensDAO as "DAO"
+participant VantagensController as "VantagensController"
+participant VantagensModel as "VantagensModel"
+participant VantagensDAO as "VantagensDAO"
 database BancoDeDados
 
 Aluno -> TelaAluno : Acessa tela de vantagens
@@ -20,3 +20,4 @@ VantagensController --> TelaAluno : retornarLista(vantagens)
 TelaAluno -> Aluno : Exibe lista de vantagens
 
 @enduml
+
