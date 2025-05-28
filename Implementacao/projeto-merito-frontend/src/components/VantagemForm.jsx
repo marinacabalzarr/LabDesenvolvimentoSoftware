@@ -29,7 +29,7 @@ const VantagemForm = ({ onClose }) => {
 
 
       alert('Vantagem cadastrada com sucesso!');
-      onClose(); // fecha o form
+      onClose();
     } catch (error) {
       console.error('Erro ao cadastrar vantagem:', error);
       alert('Erro ao cadastrar vantagem. Verifique o console.');
@@ -50,7 +50,7 @@ const VantagemForm = ({ onClose }) => {
       <input type="number" name="custoMoedas" value={formData.custoMoedas} onChange={handleChange} min={0} required />
 
       <label>URL da Imagem:</label>
-      <input type="text" name="imagem" value={formData.imagem} onChange={handleChange} />
+      <input type="text" name="imagem" value={formData.imagem} onChange={handleChange} required/>
 
       <label>ID da Empresa:</label>
       <input type="number" name="empresaId" value={formData.empresaId} onChange={handleChange} required />

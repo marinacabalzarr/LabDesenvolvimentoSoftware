@@ -12,7 +12,6 @@ body {
   min-height: 100vh;
 }
 
-/* Navbar fixa */
 nav {
   position: fixed;
   top: 0;
@@ -49,10 +48,8 @@ nav li a:hover {
   background-color: #242525;
 }
 
-/* Container principal */
 .main-content {
   margin-top: 50px;
-  /* Espaço para a navbar fixa */
   padding: 20px;
 }
 
@@ -68,7 +65,6 @@ nav li a:hover {
   flex-direction: column;
 }
 
-/* Containers */
 .container {
   background-color: white;
   border-radius: 10px;
@@ -148,7 +144,6 @@ button {
   background-color: #27ae60;
 }
 
-/* Tabelas */
 table {
   width: 100%;
   border-collapse: separate;
@@ -215,14 +210,13 @@ tr:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Efeitos adicionais */
 button:active {
   transform: translateY(1px);
 }
 
 .aluno-page-container {
   padding: 20px;
-  margin: 50px auto;
+  margin: 60px auto;
 }
 
 .aluno-page-container h1{
@@ -261,7 +255,6 @@ button:active {
 
 .add-button:hover {
   background-color: #27ae60;
-  /* Verde mais escuro no hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -272,7 +265,6 @@ button:active {
 
 .delete-button {
   background-color: #c0392b;
-  /* Verde */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -287,7 +279,6 @@ button:active {
 
 .delete-button:hover {
   background-color: #e74c3c;
-  /* Verde mais escuro no hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -296,7 +287,6 @@ button:active {
   transform: translateY(0);
 }
 
-/* Botão de vantagens */
 .vantagem-button {
   background-color: #9b59b6;
   color: white;
@@ -322,7 +312,6 @@ button:active {
   margin-left: 20px;
 }
 
-/* Lista de vantagens */
 .vantagens-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -429,7 +418,6 @@ button:active {
 
 .envio-moedas-form button {
   background-color: #2ecc71;
-  /* Verde */
   color: white;
   padding: 8px 15px;
   border: none;
@@ -445,7 +433,6 @@ button:active {
 
 .envio-moedas-form button:hover {
   background-color: #27ae60;
-  /* Verde mais escuro no hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -453,6 +440,17 @@ button:active {
 .consulta-extrato {
   margin-top: 40px;
   margin-bottom: 20px;
+}
+
+.consulta-extrato-2 {
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-bottom: 20px;  
+}
+
+.extrato-tabela-container-2{
+  margin-left: 40px;
+  max-width: 1400px;
 }
 
 .consulta-extrato input {
@@ -487,4 +485,54 @@ button:active {
 
 .extrato-tabela tr:hover {
   background-color: #f8f9fa;
+}
+
+.vantagens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin: 30px auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
+
+.vantagem-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.vantagem-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.vantagem-card h4 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.vantagem-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.vantagem-card small {
+  font-weight: bold;
+  color: #318c39;
+}
+
+.titulo2{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.titulo3{
+  margin-top: 100px;
 }

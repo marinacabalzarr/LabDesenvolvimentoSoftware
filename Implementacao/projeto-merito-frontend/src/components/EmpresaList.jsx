@@ -51,7 +51,7 @@ const EmpresaList = ({ onEdit }) => {
                                 <td>{empresa.cnpj}</td>
                                 <td className="actions-cell">
                                     <button
-                                        onClick={() => onEdit(empresa)}  // Usa a prop onEdit
+                                        onClick={() => onEdit(empresa)}
                                         className="edit-btn"
                                     >
                                         Editar

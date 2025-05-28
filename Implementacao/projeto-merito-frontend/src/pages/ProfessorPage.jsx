@@ -14,7 +14,7 @@ const ProfessorPage = () => {
       </div>
 
       <div className="consulta-extrato">
-        <h3>Consultar Extrato</h3>
+        <h3>Consultar Extrato do Professor</h3>
         <input
           type="number"
           placeholder="ID do professor"
