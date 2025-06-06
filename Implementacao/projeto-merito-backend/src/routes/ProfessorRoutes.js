@@ -3,7 +3,7 @@ const { criarProfessor, listarProfessores } = require('../controllers/ProfessorC
 
 const router = express.Router();
 
-router.post('/professores', criarProfessor);
-router.get('/professores', listarProfessores);
+router.post('/', criarProfessor);
+router.get('/', listarProfessores);
 
 module.exports = router;
