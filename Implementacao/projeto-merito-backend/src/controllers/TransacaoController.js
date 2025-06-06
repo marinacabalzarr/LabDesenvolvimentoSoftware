@@ -1,6 +1,7 @@
 const Transacao = require('../models/Transacao');
 const ProfessorDAO = require('../dao/ProfessorDAO');
 const TransacaoDAO = require('../dao/TransacaoDAO');
+const AlunoDAO = require('../dao/AlunoDAO');
 
 const enviarMoedas = async (req, res) => {
   try {
@@ -26,6 +27,7 @@ const enviarMoedas = async (req, res) => {
     const novaTransacao = new Transacao(professor_id, aluno_id, quantidade, mensagem);
     await TransacaoDAO.registrar(novaTransacao);
     await ProfessorDAO.updateSaldo(professor_id, professor.saldo - quantidade);
+    await AlunoDAO.adicionarMoedas(aluno_id, quantidade);
 
     res.status(201).send('Moedas enviadas com sucesso');
   } catch (err) {

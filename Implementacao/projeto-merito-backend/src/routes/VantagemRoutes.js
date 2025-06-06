@@ -3,8 +3,7 @@ const { criarVantagem, listarVantagens } = require('../controllers/VantagemContr
 
 const router = express.Router();
 
-router.post('/vantagens', criarVantagem);
-router.get('/vantagens', listarVantagens);
+router.post('/', criarVantagem);
+router.get('/', listarVantagens);
 
 module.exports = router;
-

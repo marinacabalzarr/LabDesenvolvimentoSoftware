@@ -1,29 +1,25 @@
 const express = require('express');
 const cors = require('cors');
-const alunoRoutes = require('./src/routes/AlunoRoutes');
-const empresaRoutes = require('./src/routes/EmpresaParceiraRoutes');
-const professorRoutes = require('./src/routes/ProfessorRoutes');
-const transacaoRoutes = require('./src/routes/TransacaoRoutes');
-
 const app = express();
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
+// Rotas
+const alunoRoutes = require('./routes/AlunoRoutes');
+const professorRoutes = require('./routes/ProfessorRoutes');
+const transacaoRoutes = require('./routes/TransacaoRoutes');
+const vantagemRoutes = require('./routes/VantagemRoutes');
+const compraRoutes = require('./routes/CompraRoutes'); // se existir
+
 app.use('/api/alunos', alunoRoutes);
-app.use('/api/empresas', empresaRoutes);
-app.use('/api', professorRoutes);
-app.use('/api', transacaoRoutes);
+app.use('/api/professores', professorRoutes);
+app.use('/api/transacoes', transacaoRoutes);
+app.use('/api/vantagens', vantagemRoutes);
+app.use('/api/compras', compraRoutes); // se já criou
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+// Iniciar servidor
+app.listen(3000, () => {
+  console.log('Servidor rodando na porta 3000');
 });
-
-app.use(cors({
-  origin: 'http://localhost:3001', 
-  credentials: true
-}));
-
-const vantagemRoutes = require('./src/routes/VantagemRoutes');
-app.use('/api', vantagemRoutes);

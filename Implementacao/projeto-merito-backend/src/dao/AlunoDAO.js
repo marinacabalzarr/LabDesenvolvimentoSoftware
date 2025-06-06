@@ -29,6 +29,12 @@ class AlunoDAO {
         const sql = 'DELETE FROM alunos WHERE id = ?';
         await db.query(sql, [id]);
     }
+
+    async adicionarMoedas(id, quantidade) {
+        const sql = 'UPDATE alunos SET moeda = moeda + ? WHERE id = ?';
+        await db.query(sql, [quantidade, id]);
+    }
+
 }
 
 module.exports = new AlunoDAO();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAlunos, deleteAluno } from '../services/alunoService';
 
-const AlunoList = ({ onEdit, refreshTrigger }) => {  
+const AlunoList = ({ onEdit, refreshTrigger, onMostrarVantagens }) => {
     const [alunos, setAlunos] = useState([]);
 
     useEffect(() => {
@@ -28,46 +28,52 @@ const AlunoList = ({ onEdit, refreshTrigger }) => {
 
     return (
         <div className="main-content">
-        <div>
-            <h2>Lista de Alunos</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>CPF</th>
-                        <th>Curso</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {alunos.map(aluno => (
-                        <tr key={aluno.id}>
-                            <td>{aluno.id}</td>
-                            <td>{aluno.nome}</td>
-                            <td>{aluno.email}</td>
-                            <td>{aluno.cpf}</td>
-                            <td>{aluno.curso}</td>
-                            <td className="actions-cell">
-                                <button 
-                                    onClick={() => onEdit(aluno)} 
-                                    className="edit-btn"
-                                >
-                                    Editar
-                                </button>
-                                <button 
-                                    onClick={() => handleDelete(aluno.id)} 
-                                    className="delete-btn"
-                                >
-                                    Deletar
-                                </button>
-                            </td>
+            <div>
+                <h2>Lista de Alunos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>CPF</th>
+                            <th>Curso</th>
+                            <th>Ações</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        {alunos.map(aluno => (
+                            <tr key={aluno.id}>
+                                <td>{aluno.id}</td>
+                                <td>{aluno.nome}</td>
+                                <td>{aluno.email}</td>
+                                <td>{aluno.cpf}</td>
+                                <td>{aluno.curso}</td>
+                                <td className="actions-cell">
+                                    <button
+                                        onClick={() => onEdit(aluno)}
+                                        className="edit-btn"
+                                    >
+                                        Editar
+                                    </button>
+                                    <button
+                                        onClick={() => handleDelete(aluno.id)}
+                                        className="delete-btn"
+                                    >
+                                        Deletar
+                                    </button>
+                                    <button
+                                        className="vantagem-button"
+                                        onClick={() => onMostrarVantagens(aluno.id)}
+                                    >
+                                        Minhas Vantagens
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
