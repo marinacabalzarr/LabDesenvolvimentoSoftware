@@ -12,8 +12,8 @@ const EnvioMoedasForm = () => {
     });
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/professores').then(res => setProfessores(res.data));
-        axios.get('http://localhost:3000/api/alunos').then(res => setAlunos(res.data));
+        axios.get('http://localhost:3001/professores').then(res => setProfessores(res.data));
+        axios.get('http://localhost:3001/alunos').then(res => setAlunos(res.data));
     }, []);
 
     const handleChange = (e) => {
@@ -30,7 +30,7 @@ const EnvioMoedasForm = () => {
         }
 
         try {
-            await axios.post('http://localhost:3000/api/transacoes', {
+            await axios.post('http://localhost:3001/transacoes/transacoes', {
                 professor_id: parseInt(formData.professor_id),
                 aluno_id: parseInt(formData.aluno_id),
                 quantidade: parseInt(formData.quantidade),

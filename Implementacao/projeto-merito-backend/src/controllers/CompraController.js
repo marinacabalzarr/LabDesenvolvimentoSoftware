@@ -19,13 +19,11 @@ const registrarCompra = async (req, res) => {
 
     const novaMoeda = aluno.moeda - vantagem.custo_moedas;
 
-    // Registrar compra
     await db.query(
       'INSERT INTO compras (aluno_id, vantagem_id, data) VALUES (?, ?, NOW())',
       [aluno_id, vantagem_id]
     );
 
-    // Atualizar saldo do aluno
     await AlunoDAO.updateMoeda(aluno_id, novaMoeda);
 
     res.status(201).json({ message: 'Compra registrada com sucesso' });

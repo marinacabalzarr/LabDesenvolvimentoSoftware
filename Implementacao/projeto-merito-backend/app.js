@@ -2,24 +2,24 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Rotas
-const alunoRoutes = require('./routes/AlunoRoutes');
-const professorRoutes = require('./routes/ProfessorRoutes');
-const transacaoRoutes = require('./routes/TransacaoRoutes');
-const vantagemRoutes = require('./routes/VantagemRoutes');
-const compraRoutes = require('./routes/CompraRoutes'); // se existir
+const alunoRoutes = require('./src/routes/AlunoRoutes');
+const professorRoutes = require('./src/routes/ProfessorRoutes');
+const vantagemRoutes = require('./src/routes/VantagemRoutes');
+const compraRoutes = require('./src/routes/CompraRoutes');
+const empresaRoutes = require('./src/routes/EmpresaParceiraRoutes');
+const transacaoRoutes = require('./src/routes/TransacaoRoutes');
 
-app.use('/api/alunos', alunoRoutes);
-app.use('/api/professores', professorRoutes);
-app.use('/api/transacoes', transacaoRoutes);
-app.use('/api/vantagens', vantagemRoutes);
-app.use('/api/compras', compraRoutes); // se já criou
+app.use('/alunos', alunoRoutes);
+app.use('/professores', professorRoutes);
+app.use('/vantagens', vantagemRoutes);
+app.use('/compras', compraRoutes);
+app.use('/empresas', empresaRoutes); 
+app.use('/transacoes', transacaoRoutes);
 
-// Iniciar servidor
-app.listen(3000, () => {
-  console.log('Servidor rodando na porta 3000');
+const PORT = 3001;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });

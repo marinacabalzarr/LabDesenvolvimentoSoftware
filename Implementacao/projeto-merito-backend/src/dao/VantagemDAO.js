@@ -17,6 +17,13 @@ class VantagemDAO {
         const sql = 'SELECT * FROM vantagens';
         return await db.query(sql);
     }
+
+    async findById(id) {
+        const sql = 'SELECT * FROM vantagens WHERE id = ?';
+        const [vantagem] = await db.query(sql, [id]);
+        return vantagem;
+    }
+
 }
 
 module.exports = new VantagemDAO();

@@ -35,6 +35,11 @@ class AlunoDAO {
         await db.query(sql, [quantidade, id]);
     }
 
+    async updateMoeda(id, novaMoeda) {
+        const sql = 'UPDATE alunos SET moeda = ? WHERE id = ?';
+        await db.query(sql, [novaMoeda, id]);
+    }
+
 }
 
 module.exports = new AlunoDAO();

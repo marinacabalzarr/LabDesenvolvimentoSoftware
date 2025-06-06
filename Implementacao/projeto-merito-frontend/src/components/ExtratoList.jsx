@@ -7,8 +7,8 @@ const ExtratoList = ({ tipo, id }) => {
   useEffect(() => {
     if (tipo && id) {
       const url = tipo === 'professor'
-        ? `http://localhost:3000/api/extrato/professor/${id}`
-        : `http://localhost:3000/api/extrato/aluno/${id}`;
+        ? `http://localhost:3001/transacoes/extrato/professor/${id}`
+        : `http://localhost:3001/transacoes/extrato/aluno/${id}`;
 
       axios.get(url).then(res => setExtrato(res.data));
     }

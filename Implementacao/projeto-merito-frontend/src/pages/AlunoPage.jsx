@@ -15,7 +15,7 @@ const AlunoPage = () => {
   const [moedas, setMoedas] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/vantagens')
+    axios.get('http://localhost:3001/vantagens')
       .then(res => setVantagens(res.data))
       .catch(err => console.error("Erro ao carregar vantagens:", err));
   }, [refreshList]);
@@ -42,20 +42,22 @@ const AlunoPage = () => {
       return;
     }
 
-    axios.post('http://localhost:3000/api/compras', {
+    axios.post('http://localhost:3001/compras', {
       aluno_id: parseInt(alunoId),
       vantagem_id: parseInt(vantagemId)
     }).then(() => {
-      alert("Vantagem resgatada com sucesso!");
+      alert("Vantagem comprada com sucesso!");
       setRefreshList(prev => !prev);
+      buscarMinhasVantagens(alunoId);
+      buscarSaldoAluno(alunoId);
     }).catch(err => {
-      console.error("Erro ao resgatar:", err);
-      alert("Erro ao resgatar vantagem.");
+      console.error("Erro ao comprar:", err);
+      alert(err.response?.data?.error || "Erro ao comprar vantagem.");
     });
   };
 
   const buscarMinhasVantagens = (id) => {
-    axios.get(`http://localhost:3000/api/compras/${id}`)
+    axios.get(`http://localhost:3001/compras/${id}`)
       .then(res => {
         setMinhasVantagens(res.data);
         setShowMinhasVantagens(true);
@@ -65,13 +67,16 @@ const AlunoPage = () => {
   };
 
   const buscarSaldoAluno = (id) => {
-    axios.get(`http://localhost:3000/api/alunos/${id}`)
+    axios.get(`http://localhost:3001/alunos/${id}`)
       .then(res => setMoedas(res.data.moeda || 0))
       .catch(err => console.error("Erro ao buscar saldo:", err));
   };
 
   useEffect(() => {
-    if (alunoId) buscarSaldoAluno(alunoId);
+    if (alunoId) {
+      buscarSaldoAluno(alunoId);
+      buscarMinhasVantagens(alunoId);
+    }
   }, [alunoId, refreshList]);
 
   return (
@@ -108,8 +113,8 @@ const AlunoPage = () => {
             <div className="container">
               <h3>Vantagens Compradas</h3>
               <ul>
-                {minhasVantagens.map(v => (
-                  <li key={v.id}>{v.nome} — {v.descricao}</li>
+                {minhasVantagens.map((v, i) => (
+                  <li key={i}>{v.nome} — {v.descricao}</li>
                 ))}
               </ul>
             </div>

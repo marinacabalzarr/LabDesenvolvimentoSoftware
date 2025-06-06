@@ -35,4 +35,3 @@ const ProfessorPage = () => {
 };
 
 export default ProfessorPage;
-

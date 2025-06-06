@@ -19,7 +19,7 @@ const VantagemForm = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:3000/api/vantagens', {
+      await axios.post('http://localhost:3001/vantagens', {
         nome: formData.nome,
         descricao: formData.descricao,
         custo_moedas: parseInt(formData.custoMoedas),
