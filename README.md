@@ -7,7 +7,3 @@
 
 ## Orientadores
 * Cleiton Silva Tavares
-
-## Instruções de utilização
-
- 
