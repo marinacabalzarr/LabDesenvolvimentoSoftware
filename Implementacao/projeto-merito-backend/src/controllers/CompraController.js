@@ -47,14 +47,15 @@ const registrarCompra = async (req, res) => {
     const mensagemAluno = `
 Olá ${aluno.nome},
 
-Você comprou a vantagem "${vantagem.nome}" com sucesso!
+Você comprou a vantagem "${vantagem.descricao}" com sucesso!
 
 CUPOM: ${codigoCupom}
 
 Apresente este código no momento da troca presencial.
 
 Atenciosamente,
-Sistema de Mérito
+
+Sistema de Moeda Estudantil
     `;
 
     // Enviar e-mail à empresa
@@ -68,7 +69,8 @@ Código do cupom: ${codigoCupom}
 Verifique esse código no momento da troca presencial.
 
 Atenciosamente,
-Sistema de Mérito
+
+Sistema de Moeda Estudantil
     `;
 
     // Enviar e-mails protegidos

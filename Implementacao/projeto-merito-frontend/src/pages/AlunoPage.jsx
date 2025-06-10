@@ -103,9 +103,16 @@ const AlunoPage = () => {
             onEdit={handleEdit}
             refreshTrigger={refreshList}
             onMostrarVantagens={id => {
-              setAlunoId(id);
-              buscarMinhasVantagens(id);
-              buscarSaldoAluno(id);
+              if (alunoId === id && showMinhasVantagens) {
+                // se já está visível e o mesmo aluno clicou de novo → oculta
+                setShowMinhasVantagens(false);
+              } else {
+                // novo clique ou novo aluno → carrega e exibe
+                setAlunoId(id);
+                buscarMinhasVantagens(id);
+                buscarSaldoAluno(id);
+                setShowMinhasVantagens(true);
+              }
             }}
           />
 
