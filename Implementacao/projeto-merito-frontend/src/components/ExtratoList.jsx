@@ -23,7 +23,6 @@ const ExtratoList = ({ tipo, id }) => {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
               <th>Aluno</th>
               <th>Professor</th>
               <th>Quantidade</th>
@@ -33,14 +32,14 @@ const ExtratoList = ({ tipo, id }) => {
           </thead>
           <tbody>
             {extrato.map((t, index) => (
-              <tr key={index}>
-                <td>{t.id}</td>
-                <td>{t.nome_aluno}</td>
-                <td>{t.nome_professor}</td>
-                <td>{t.quantidade}</td>
+              <tr key={index} className={t.tipo === 'gasto' ? 'gasto' : 'recebido'}>
+                <td>{t.nome_aluno || '-'}</td>
+                <td>{t.nome_professor || t.origem || '-'}</td>
+                <td>${t.quantidade}</td>
                 <td>{t.mensagem}</td>
                 <td>{new Date(t.data).toLocaleString()}</td>
               </tr>
+
             ))}
           </tbody>
         </table>

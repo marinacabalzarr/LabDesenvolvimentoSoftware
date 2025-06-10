@@ -110,7 +110,7 @@ const AlunoPage = () => {
           />
 
           {showMinhasVantagens && (
-            <div className="container">
+            <div className="vantagens-lista">
               <h3>Vantagens Compradas</h3>
               <ul>
                 {minhasVantagens.map((v, i) => (
