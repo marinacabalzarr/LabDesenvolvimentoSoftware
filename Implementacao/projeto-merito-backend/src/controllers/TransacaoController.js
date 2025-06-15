@@ -2,11 +2,11 @@ const Transacao = require('../models/Transacao');
 const ProfessorDAO = require('../dao/ProfessorDAO');
 const TransacaoDAO = require('../dao/TransacaoDAO');
 const AlunoDAO = require('../dao/AlunoDAO');
+const { enviarEmail } = require('../services/EmailService');
 
 const enviarMoedas = async (req, res) => {
   try {
     const { professor_id, aluno_id, quantidade, mensagem } = req.body;
-
     console.log("📦 Dados recebidos:", req.body);
 
     if (!mensagem || mensagem.trim() === '') {
@@ -24,10 +24,29 @@ const enviarMoedas = async (req, res) => {
       return res.status(400).send('Saldo insuficiente');
     }
 
+    const aluno = await AlunoDAO.readById(aluno_id);
+
     const novaTransacao = new Transacao(professor_id, aluno_id, quantidade, mensagem);
     await TransacaoDAO.registrar(novaTransacao);
     await ProfessorDAO.updateSaldo(professor_id, professor.saldo - quantidade);
     await AlunoDAO.adicionarMoedas(aluno_id, quantidade);
+
+    
+    const mensagemEmail = `
+Olá ${aluno.nome},
+
+Você recebeu ${quantidade} moedas do(a) professor(a) ${professor.nome}!
+
+Motivo: ${mensagem}
+
+Consulte seu novo saldo na plataforma.
+
+Atenciosamente,
+
+Sistema de Moeda Estudantil
+    `;
+
+    await enviarEmail(aluno.email, 'Você recebeu moedas!', mensagemEmail);
 
     res.status(201).send('Moedas enviadas com sucesso');
   } catch (err) {
@@ -35,7 +54,6 @@ const enviarMoedas = async (req, res) => {
     res.status(500).send(err.message);
   }
 };
-
 
 const extratoProfessor = async (req, res) => {
   try {

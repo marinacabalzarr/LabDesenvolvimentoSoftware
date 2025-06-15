@@ -3,7 +3,6 @@ const VantagemDAO = require('../dao/VantagemDAO');
 const db = require('../dao/Database');
 const { enviarEmail } = require('../services/EmailService'); 
 
-// Função auxiliar para gerar código de cupom
 const gerarCodigo = () => {
   return Math.random().toString(36).substring(2, 10).toUpperCase();
 };
@@ -26,16 +25,13 @@ const registrarCompra = async (req, res) => {
     const novaMoeda = aluno.moeda - vantagem.custo_moedas;
     const codigoCupom = gerarCodigo();
 
-    // Registrar compra com código
     await db.query(
       'INSERT INTO compras (aluno_id, vantagem_id, data, codigo) VALUES (?, ?, NOW(), ?)',
       [aluno_id, vantagem_id, codigoCupom]
     );
 
-    // Atualizar saldo do aluno
     await AlunoDAO.updateMoeda(aluno_id, novaMoeda);
 
-    // Buscar e-mail da empresa parceira
     const empresa = await db.query(
       'SELECT email, nome FROM empresas_parceiras WHERE id = ?',
       [vantagem.empresa_id]
@@ -43,7 +39,6 @@ const registrarCompra = async (req, res) => {
 
     const emailEmpresa = empresa[0]?.email || 'empresa@exemplo.com';
 
-    // Enviar e-mail ao aluno
     const mensagemAluno = `
 Olá ${aluno.nome},
 
@@ -58,7 +53,6 @@ Atenciosamente,
 Sistema de Moeda Estudantil
     `;
 
-    // Enviar e-mail à empresa
     const mensagemEmpresa = `
 Olá ${empresa[0]?.nome},
 
@@ -73,7 +67,6 @@ Atenciosamente,
 Sistema de Moeda Estudantil
     `;
 
-    // Enviar e-mails protegidos
     try {
       await enviarEmail(aluno.email, 'Seu Cupom de Vantagem', mensagemAluno);
     } catch (err) {
