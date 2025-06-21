@@ -16,8 +16,13 @@ app.use('/alunos', alunoRoutes);
 app.use('/professores', professorRoutes);
 app.use('/vantagens', vantagemRoutes);
 app.use('/compras', compraRoutes);
-app.use('/empresas', empresaRoutes); 
+app.use('/empresas', empresaRoutes);
 app.use('/transacoes', transacaoRoutes);
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: err.message });
+});
 
 const PORT = 3001;
 app.listen(PORT, () => {
