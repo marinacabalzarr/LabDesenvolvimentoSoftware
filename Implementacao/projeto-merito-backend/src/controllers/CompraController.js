@@ -39,42 +39,22 @@ const registrarCompra = async (req, res) => {
 
     const emailEmpresa = empresa[0]?.email || 'empresa@exemplo.com';
 
-    const mensagemAluno = `
-Olá ${aluno.nome},
-
-Você comprou a vantagem "${vantagem.descricao}" com sucesso!
-
-CUPOM: ${codigoCupom}
-
-Apresente este código no momento da troca presencial.
-
-Atenciosamente,
-
-Sistema de Moeda Estudantil
-    `;
-
-    const mensagemEmpresa = `
-Olá ${empresa[0]?.nome},
-
-O aluno ${aluno.nome} comprou a vantagem "${vantagem.nome}".
-
-Código do cupom: ${codigoCupom}
-
-Verifique esse código no momento da troca presencial.
-
-Atenciosamente,
-
-Sistema de Moeda Estudantil
-    `;
-
     try {
-      await enviarEmail(aluno.email, 'Seu Cupom de Vantagem', mensagemAluno);
+      await enviarEmail(
+        aluno.email,
+        'Seu Cupom de Vantagem',
+        `Olá ${aluno.nome},\n\nVocê comprou a vantagem "${vantagem.descricao}" com sucesso!\n\nCUPOM: ${codigoCupom}\n\nApresente este código no momento da troca presencial.\n\nAtenciosamente,\n\nSistema de Moeda Estudantil`
+      );
     } catch (err) {
       console.error('❌ Erro ao enviar e-mail para aluno:', err.message);
     }
 
     try {
-      await enviarEmail(emailEmpresa, 'Vantagem Resgatada por Aluno', mensagemEmpresa);
+      await enviarEmail(
+        emailEmpresa,
+        'Vantagem Resgatada por Aluno',
+        `Olá ${empresa[0]?.nome},\n\nO aluno ${aluno.nome} comprou a vantagem "${vantagem.nome}".\n\nCódigo do cupom: ${codigoCupom}\n\nVerifique esse código no momento da troca presencial.\n\nAtenciosamente,\n\nSistema de Moeda Estudantil`
+      );
     } catch (err) {
       console.error('❌ Erro ao enviar e-mail para empresa:', err.message);
     }
